@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31613.86
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBuscador", "SistemaBuscador.csproj", "{AC22669F-394C-4D07-BA0A-ED49A0F89196}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{AC22669F-394C-4D07-BA0A-ED49A0F89196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC22669F-394C-4D07-BA0A-ED49A0F89196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC22669F-394C-4D07-BA0A-ED49A0F89196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC22669F-394C-4D07-BA0A-ED49A0F89196}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B0E6DAF7-4E62-4560-9E8E-FB31838B3607}
+	EndGlobalSection
+EndGlobal
