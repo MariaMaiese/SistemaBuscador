@@ -23,6 +23,16 @@ namespace SistemaBuscador.Controllers
             return View();
         }
 
+        [HttpPost] // aqui se indica que nuestro form su metodo es post
+        public IActionResult Login(LoginViewModel model) // aqui se indica que tipo de dato recibe el metodo, en el index ingresamos que el modelo es LoginViewModel
+        {
+            if(!ModelState.IsValid)
+            {
+                return View("Index", model);
+            }
+            return View("Privacy");
+        }
+
         public IActionResult Privacy()
         {
             return View();
