@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SistemaBuscador.Models;
+using SistemaBuscador.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -26,20 +28,44 @@ namespace SistemaBuscador.Controllers
         [HttpPost] // aqui se indica que nuestro form su metodo es post
         public IActionResult Login(LoginViewModel model) // aqui se indica que tipo de dato recibe el metodo, en el index ingresamos que el modelo es LoginViewModel
         {
-            if(!ModelState.IsValid)
+            var repo = new LoginRepository();
+            if(ModelState.IsValid)
             {
-                return View("Index", model);
+                if (repo.UserExist(model.Usuario, model.Password))
+                {
+                    Guid sesionId = Guid.NewGuid();
+                    HttpContext.Session.SetString("sessionId", sesionId.ToString());
+                    Response.Cookies.Append("sessionId", sesionId.ToString());
+                    return View("Privacy");
+
+                }
+                else //error personalizado
+                {
+                    ModelState.AddModelError(string.Empty, "El usuario o contraseña no es válido");
+                }
             }
-            return View("Privacy");
+            return View("Index", model);
+
         }
 
         public IActionResult Privacy()
         {
+            string sessionId = Request.Cookies["sessionId"];
+            if(string.IsNullOrEmpty(sessionId) || !sessionId.Equals(HttpContext.Session.GetString("sessionId")))
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
 
         public IActionResult Prueba()
         {
+            string sessionId = Request.Cookies["sessionId"];
+            if (string.IsNullOrEmpty(sessionId) || !sessionId.Equals(HttpContext.Session.GetString("sessionId")))
+            {
+                return RedirectToAction("Index");
+            }
+            return View();
             return View();
         }
             
@@ -47,6 +73,7 @@ namespace SistemaBuscador.Controllers
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
+
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }

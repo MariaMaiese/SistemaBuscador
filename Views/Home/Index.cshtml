@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title> Sistema Buscador</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link href="~/css/site.css" rel="stylesheet" />
 </head>
 <body>
 
@@ -32,6 +32,7 @@
                         <span class="text-danger" asp-validation-for="Password"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">Ingresar</button>
+                    <div asp-validation-summary="All" class="text-danger mt-3"></div>
                 </form>
             </div>
         </div>
