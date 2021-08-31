@@ -66,7 +66,7 @@ namespace SistemaBuscador.Controllers
                 return RedirectToAction("Index");
             }
             return View();
-            return View();
+      
         }
             
 

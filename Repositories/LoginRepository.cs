@@ -16,7 +16,10 @@ namespace SistemaBuscador.Repositories
 
             string connectionString = "server=localhost;database=SistemaBuscador;Integrated Security=true;";
             using SqlConnection sql = new SqlConnection(connectionString);
-            using SqlCommand cmd = new SqlCommand("select count(*) from usuarios where usuario='"+ usuario +" ' and password = '" + password + "'", sql);
+            using SqlCommand cmd = new SqlCommand("sp_check_user", sql);
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            cmd.Parameters.Add(new SqlParameter("@user", usuario));
+            cmd.Parameters.Add(new SqlParameter("@password", password));
 
             //abrir la conexion
             sql.Open();
