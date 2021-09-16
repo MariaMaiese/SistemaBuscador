@@ -26,6 +26,8 @@ namespace SistemaBuscador.Repositories
         {
             var resultado = false;
 
+            //logica de EF
+
             var usuarioBD = await _context.Usuarios
                 .FirstOrDefaultAsync(x => x.NombreUsuario == usuario && x.Password == password);
 
