@@ -77,3 +77,11 @@ body {
     margin-left: auto;
     margin-top: 150px;
 }
+.btn-outline-secondary {
+    border: 1px solid #ced4da;
+}
+    .btn-outline-secondary:hover {
+        background-color: #ededed;
+        border: 1px solid #ced4da;
+    }
+
