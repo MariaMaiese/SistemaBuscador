@@ -16,6 +16,7 @@
     <title> Sistema Buscador</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link href="~/css/site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 </head>
 <body>
 
@@ -33,7 +34,13 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Password"></label>
-                        <input type="password" asp-for="Password" class="form-control" />
+                        <div class="input-group-append">
+                            <input type="password" asp-for="Password" class="form-control" />
+                            <button id="boton-ojo" type="button"class=" btn btn-secondary">
+                                <i id="icono-ojo" class="bi bi-eye"></i>
+                            </button>                 
+                        </div>
+
                         <span class="text-danger" asp-validation-for="Password"></span>
                     </div>
                     <button type="submit" class="btn btn-primary">Ingresar</button>
@@ -47,6 +54,28 @@
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script>
+        $(document).ready(function () {
+            //accediendo al id del boton ojo
+            $("#boton-ojo").click(function () {
+                //toma como ID el asp-for. porque esta enlazado al campo password
+                let tipo = $("#Password").attr("type");  //estoy leyendo la propiedad del elemento y la guardo en la variable tipo
+                if (tipo == "password") {
+                    $("#Password").attr("type", "text");  //cuando coloco 1 solo parameto es para obtenerlo, si coloco 2 es para modificarlo
+                    $("#icono-ojo").removeClass("bi-eye");
+                    $("#icono-ojo").addClass("bi-eye-slash");
+                } else {
+                    $("#Password").attr("type", "password");
+                    $("#icono-ojo").removeClass("bi-eye-slash");
+                    $("#icono-ojo").addClass("bi-eye");
+                }
+            });
+
+
+        });
+
+
+    </script>
 
 </body>
 </html>
