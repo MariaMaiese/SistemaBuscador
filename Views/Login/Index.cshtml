@@ -34,21 +34,21 @@
                     <form method="post" asp-controller="Login" asp-action="Login">
                         <div >
                             <div ><label asp-for="Usuario"></label></div>
-                            <div class="formulario"><input type="text" asp-for="Usuario" /></div>
+                             <input class="form-control" type="text" asp-for="Usuario" />
                             <span class="text-danger" asp-validation-for="Usuario"></span>
                         </div>
                         <div>
-                            <div><label asp-for="Password"></label></div>
-                            <div class="input-group-append formulario">
-                                <input type="password" asp-for="Password" />
-                                <button id="boton-ojo" type="button" >
+                            <label asp-for="Password"></label>
+                            <div class="input-group-append">
+                                <input class="form-control" type="password" asp-for="Password" />
+                                <button id="boton-ojo" type="button" class="btn btn-outline-secondary">
                                     <i id="icono-ojo" class="bi bi-eye"></i>
                                 </button>
                             </div>
 
                             <span class="text-danger" asp-validation-for="Password"></span>
                         </div>
-                        <button type="submit" class="btn btn-primary">Ingresar</button>
+                        <button type="submit" class="btn btn-primary mt-3">Ingresar</button>
                         <div asp-validation-summary="All" class="text-danger mt-3"></div>
                     </form>
                 </div>

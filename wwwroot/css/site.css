@@ -83,9 +83,9 @@ body {
     background-color: #F6F6F4;
 }
 .btn-outline-secondary:hover {
-    background-color: #ededed;
-    border: 1px solid #ced4da;
-    color:black;
+    background-color: #ededed !important;
+    border: 1px solid #ced4da !important;
+    color:black !important;
 }
 
 .parte-izquierda {
@@ -107,10 +107,10 @@ body {
     margin-left: 2.5rem;
 }
 
-.formulario {
-    border-bottom: 2px thin #ced4da;
-/*    background-color: #F6F6F4;*/
-    border-radius: 3px;
+.form-control {
+    border: none !important;
+    border-bottom: 2px thin #ededed !important;
+    background-color: #ededed !important;
 }
 
 #icono-ojo {
