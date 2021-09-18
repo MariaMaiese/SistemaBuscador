@@ -32,16 +32,16 @@
             <div class="card-login">
                 <div class="container">
                     <form method="post" asp-controller="Login" asp-action="Login">
-                        <div class="form-group">
-                            <label asp-for="Usuario"></label>
-                            <input type="text" asp-for="Usuario" class="form-control" />
+                        <div >
+                            <div ><label asp-for="Usuario"></label></div>
+                            <div class="formulario"><input type="text" asp-for="Usuario" /></div>
                             <span class="text-danger" asp-validation-for="Usuario"></span>
                         </div>
-                        <div class="form-group">
-                            <label asp-for="Password"></label>
-                            <div class="input-group-append">
-                                <input type="password" asp-for="Password" class="form-control" />
-                                <button id="boton-ojo" type="button" class=" btn btn-outline-secondary">
+                        <div>
+                            <div><label asp-for="Password"></label></div>
+                            <div class="input-group-append formulario">
+                                <input type="password" asp-for="Password" />
+                                <button id="boton-ojo" type="button" >
                                     <i id="icono-ojo" class="bi bi-eye"></i>
                                 </button>
                             </div>

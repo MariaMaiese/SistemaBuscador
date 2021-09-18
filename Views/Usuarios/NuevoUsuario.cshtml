@@ -1,0 +1,58 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model UsuarioCreacionModel
+
+<h3>Nuevo Usuario</h3>
+<hr />
+
+<div class="alert alert-success mt-3" role="alert">
+    * La Contraseña debe tener al menos una mayúscula, minúsculas dígitos y 8 caracteres.
+</div>
+
+<div class="card">
+    <div class="card-body">
+        <form action="NuevoUsuario" method="post">
+            <div class="form-group">
+                <div><label asp-for="NombreUsuario"></label></div>
+                <div><input asp-for="NombreUsuario" type="text" /></div>
+                <span asp-validation-for="NombreUsuario" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nombres"></label>
+                <input asp-for="Nombres" type="text" />
+                <span asp-validation-for="Nombres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Apellidos"></label>
+                <input asp-for="Apellidos" type="text" />
+                <span asp-validation-for="Apellidos" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RolId"></label>
+                <select asp-for="RolId">
+                    <option value="1">--Seleccione--</option>
+                    <option value="2">Administrador</option>
+                    <option value="3">Supervisor</option>
+                    <option value="4">Vendedor</option>
+                </select>
+                <span asp-validation-for="RolId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" type="password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RePassword"></label>
+                <input asp-for="RePassword" type="password" />
+                <span asp-validation-for="RePassword" class="text-danger"></span>
+            </div>
+            <a class="btn" asp-action="Index">Cancelar</a>
+            <button class="btn" type="submit">Guardar</button>
+           
+        </form>
+    </div>
+</div>

@@ -9,10 +9,10 @@
         <h3>Listado de Usuarios</h3>
     </div>
     <div class="col-md-6" >
-        <button class="btn btn-primary float-right"><i class="bi bi-person-plus"></i> Nuevo</button>
+        <a asp-action="NuevoUsuario" class="btn btn-primary float-right"><i class="bi bi-person-plus"></i> Nuevo</a>
     </div>
 </div>
-
+<hr />
 
 <hr />
 
@@ -66,7 +66,7 @@
             </tbody>
 
         </table>
-        <Button class="btn btn-success">Volver</Button>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-success">Volver</a>
 
     </div>
 

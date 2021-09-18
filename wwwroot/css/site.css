@@ -107,13 +107,14 @@ body {
     margin-left: 2.5rem;
 }
 
-.form-control {
-    border: 2px thin #ced4da;
-    background-color: #F6F6F4;
+.formulario {
+    border-bottom: 2px thin #ced4da;
+/*    background-color: #F6F6F4;*/
+    border-radius: 3px;
 }
 
 #icono-ojo {
-    border: 2px thin #ced4da;
-    background-color: #F6F6F4;
+
+
 } 
 
