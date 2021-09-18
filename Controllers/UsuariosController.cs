@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SistemaBuscador.Controllers
 {
-    public class InicioController: Controller
+    public class UsuariosController:Controller
     {
         public IActionResult Index()
         {

@@ -26,24 +26,6 @@ namespace SistemaBuscador.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
-        {
-            // aqui esta validando que el usuario tenga la variable de sesión, esto no le corresponde al home controller y se repite en todas las acciones
-            //string sessionId = Request.Cookies["sessionId"];
-            //if(string.IsNullOrEmpty(sessionId) || !sessionId.Equals(HttpContext.Session.GetString("sessionId")))
-            //{
-            //    return RedirectToAction("Index");
-            //}
-            return View();
-        }
-
-        public IActionResult Prueba()
-        {
-            return View();
-      
-        }
-            
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
