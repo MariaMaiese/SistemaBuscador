@@ -59,9 +59,10 @@ html {
 }
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
-  background-color:#ededed;
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    /*    background-color: #ededed;*/
+    background: linear-gradient(to bottom right, #a5a58d, #ffffff);
 }
 .footer {
   position: absolute;
@@ -72,16 +73,47 @@ body {
 }
 
 .card-login {
-    max-width: 40%;
+    max-width: 70%;
     margin-right: auto;
     margin-left: auto;
     margin-top: 150px;
 }
 .btn-outline-secondary {
     border: 1px solid #ced4da;
+    background-color: #F6F6F4;
 }
-    .btn-outline-secondary:hover {
-        background-color: #ededed;
-        border: 1px solid #ced4da;
-    }
+.btn-outline-secondary:hover {
+    background-color: #ededed;
+    border: 1px solid #ced4da;
+    color:black;
+}
+
+.parte-izquierda {
+    
+    max-width: 40%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 150px;
+    display: inline;
+
+}
+
+.titulo-h1{
+    text-align:center;
+}
+
+.titulo-h3 {
+    text-align: justify;
+    margin-left: 2.5rem;
+}
+
+.form-control {
+    border: 2px thin #ced4da;
+    background-color: #F6F6F4;
+}
+
+#icono-ojo {
+    border: 2px thin #ced4da;
+    background-color: #F6F6F4;
+} 
 
