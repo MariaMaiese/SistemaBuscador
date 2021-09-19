@@ -3,7 +3,8 @@
 *@
 @{
 }
-
+@*Sera una lista del modelo*@
+@model List<UsuarioListaModel> 
 <div class="row">
     <div class="col-md-6">
         <h3>Listado de Usuarios</h3>
@@ -12,7 +13,6 @@
         <a asp-action="NuevoUsuario" class="btn btn-primary float-right"><i class="bi bi-person-plus"></i> Nuevo</a>
     </div>
 </div>
-<hr />
 
 <hr />
 
@@ -22,7 +22,7 @@
             <thead>
                 <tr>
                     <th>
-                        id
+                        Id
                     </th>
                     <th>
                         Nombre de Usuario
@@ -42,27 +42,33 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>
-                        1
-                    </td>
-                    <td>
-                        Usuario 1
-                    </td>
-                    <td>
-                        Nombres 1
-                    </td>
-                    <td>
-                        Apellidos 1
-                    </td>
-                    <td>
-                        Rol 1
-                    </td>
-                    <td>
-                        <button class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
-                        <Button class="btn btn-danger"><i class="bi bi-trash"></i></Button>
-                    </td>
-                </tr>
+                @*la variable usuario representa cada objeto en el arreglo*@
+                @foreach (var usuario in Model)
+                {
+                    <tr>
+                        <td>
+                            @usuario.Id
+                        </td>
+                        <td>
+                            @usuario.NombreUsuario
+                        </td>
+                        <td>
+                            @usuario.Nombres
+                        </td>
+                        <td>
+                            @usuario.Apellidos
+                        </td>
+                        <td>
+                            @usuario.Rol
+                        </td>
+                        <td>
+                            <a asp-action="ActualizarUsuario" asp-route-id="@usuario.Id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bi bi-pencil-square"></i></a>
+                            <Button class="btn btn-danger"data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="bi bi-trash"></i></Button>
+                            <a asp-action="CambiarPassword" asp-route-id="@usuario.Id" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Cambiar Contraseña"><i class="bi bi-key"></i></a>
+                        </td>
+                    </tr>
+                }
+
             </tbody>
 
         </table>
