@@ -34,7 +34,7 @@ namespace SistemaBuscador.Repositories
             _context.Usuarios.Add(nuevoUsuario);  //agrego al usuario en la bd
             await _context.SaveChangesAsync();  //guardo los cambios en la bd
         }
-        public async Task<List<UsuarioListaModel>> ObtenerListaUsuarios()
+        public async Task<List<UsuarioListaModel>> ObtenerListaRoles()
         {
             var respuesta = new List<UsuarioListaModel>(); //creando la variable de respuesta que es un listado
             var listaDelaBd = await _context.Usuarios.ToListAsync(); //nos traemos los objetos de la bd gracias al _context
@@ -88,6 +88,13 @@ namespace SistemaBuscador.Repositories
             var usuarioDb = await _context.Usuarios.FirstOrDefaultAsync(x => x.Id == model.Id);
             usuarioDb.Password =_seguridad.Encriptar(model.Password);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task EliminarUsuario(int id)
+        {
+            var usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.Id == id); //buscamos el usuario que tenga el mmismo id en la bd
+            _context.Usuarios.Remove(usuario); //eliminamos el usuario
+            await _context.SaveChangesAsync(); // guardamos los cambios
         }
     }
     

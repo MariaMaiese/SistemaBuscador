@@ -1,0 +1,18 @@
+﻿@{
+}
+@model UsuarioEdicionModel  
+<h3>Eliminar Usuario</h3>
+<hr />
+
+
+<div class="card">
+    <div class="card-body">
+        <p>¿Está seguro que quiere eliminar el usuario: <b>@Model.NombreUsuario</b>?</p>
+        <form action="EliminarUsuario" method="post">
+            <input asp-for="Id" type="hidden" />
+            <a asp-action="Index" class="btn btn-outline-secondary">Cancelar</a>
+            <button type="submit" class="btn btn-outline-danger">Eliminar</button>
+        </form>
+    </div>
+
+</div>

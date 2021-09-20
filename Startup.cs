@@ -34,6 +34,7 @@ namespace SistemaBuscador
             services.AddScoped<ILoginRepository, LoginRepositoryEF>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<ISeguridad, Seguridad>();
+            services.AddScoped<IRolRepository, RolRepository>();
             services.AddDbContext<ApplicationDbContext>(options=>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
         }

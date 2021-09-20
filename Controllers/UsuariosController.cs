@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SistemaBuscador.Controllers
 {
-    public class UsuariosController:Controller
+    public class UsuariosController : Controller
     {
         private readonly IUsuarioRepository _repository;
 
@@ -16,7 +16,7 @@ namespace SistemaBuscador.Controllers
         {
             _repository = repository;
         }
-        public async Task< IActionResult> Index()
+        public async Task<IActionResult> Index()
         {
             var listaUaurio = await _repository.ObtenerListaUsuarios();
             return View(listaUaurio);
@@ -29,7 +29,7 @@ namespace SistemaBuscador.Controllers
         [HttpPost]
         public async Task<IActionResult> NuevoUsuario(UsuarioCreacionModel model) //metodo para recibir la informcion de los usuarios y recibe como parametro el modelo
         {
-            if(ModelState.IsValid) //si los datos estan correctos segun las validaciones del modelo
+            if (ModelState.IsValid) //si los datos estan correctos segun las validaciones del modelo
             {
                 //guardar el usuario en la bd
                 await _repository.InsertarUsuario(model);
@@ -51,7 +51,7 @@ namespace SistemaBuscador.Controllers
             await _repository.ActualizarUsuario(model);
             return RedirectToAction("Index");
         }
-        public  IActionResult  CambiarPassword(int id) 
+        public IActionResult CambiarPassword(int id)
         {
             ViewBag.idUsuario = id;
             return View();
@@ -61,6 +61,18 @@ namespace SistemaBuscador.Controllers
         public async Task<IActionResult> CambiarPassword(UsuarioCambioPasswordModel model)
         {
             await _repository.ActualizarPassword(model);
+            return RedirectToAction("Index");
+        }
+        public async Task<IActionResult> EliminarUsuario(int id)
+        {
+            var usuario = await _repository.ObtenerUsuarioPorId(id);
+            return View(usuario);
+        }
+        [HttpPost]
+        public async Task<IActionResult> EliminarUsuario(UsuarioEdicionModel model)
+        {
+            //metodo para eliminar el usuario
+            await _repository.EliminarUsuario(model.Id); //estamos llamando al metodo del repository que elimina los usuarios y como parameto le pasamos el id del modelo
             return RedirectToAction("Index");
         }
     }

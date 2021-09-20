@@ -63,7 +63,7 @@
                         </td>
                         <td>
                             <a asp-action="ActualizarUsuario" asp-route-id="@usuario.Id" class="btn btn-warning" data-toggle="tooltip" data-placement="top" title="Editar"><i class="bi bi-pencil-square"></i></a>
-                            <Button class="btn btn-danger"data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="bi bi-trash"></i></Button>
+                            <a asp-action="EliminarUsuario" asp-route-id="@usuario.Id" class="btn btn-danger"data-toggle="tooltip" data-placement="top" title="Eliminar"><i class="bi bi-trash"></i></a>
                             <a asp-action="CambiarPassword" asp-route-id="@usuario.Id" class="btn btn-success" data-toggle="tooltip" data-placement="top" title="Cambiar Contraseña"><i class="bi bi-key"></i></a>
                         </td>
                     </tr>
