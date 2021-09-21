@@ -19,7 +19,7 @@ namespace SistemaBuscador.Repositories
             _context = context;
             _seguridad = seguridad;
         }
-    public async Task InsertarUsuario(UsuarioCreacionModel model)
+        public async Task InsertarUsuario(UsuarioCreacionModel model)
         {
             var nuevoUsuario = new Usuario() //estamos creando un objeto que tendrá las propiedades de la entidad usuario
             {
@@ -34,7 +34,7 @@ namespace SistemaBuscador.Repositories
             _context.Usuarios.Add(nuevoUsuario);  //agrego al usuario en la bd
             await _context.SaveChangesAsync();  //guardo los cambios en la bd
         }
-        public async Task<List<UsuarioListaModel>> ObtenerListaRoles()
+        public async Task<List<UsuarioListaModel>> ObtenerListaUsuarios()
         {
             var respuesta = new List<UsuarioListaModel>(); //creando la variable de respuesta que es un listado
             var listaDelaBd = await _context.Usuarios.ToListAsync(); //nos traemos los objetos de la bd gracias al _context
