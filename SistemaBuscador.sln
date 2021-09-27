@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.31613.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaBuscador", "SistemaBuscador.csproj", "{AC22669F-394C-4D07-BA0A-ED49A0F89196}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SistemaBuscador.Test", "..\SistemaBuscador.Test\SistemaBuscador.Test.csproj", "{BFDA5CFF-75F1-4E22-A68D-EEFA9C824BC1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SistemaBuscador.Test", "..\SistemaBuscador.Test\SistemaBuscador.Test.csproj", "{BFDA5CFF-75F1-4E22-A68D-EEFA9C824BC1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
