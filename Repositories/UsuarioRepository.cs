@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SistemaBuscador.Entities;
 using SistemaBuscador.Models;
 using SistemaBuscador.Utilidades;
@@ -13,11 +14,13 @@ namespace SistemaBuscador.Repositories
     {
         private readonly ApplicationDbContext _context;
         private readonly ISeguridad _seguridad;
+        private readonly IRolRepository _rolRepository;
 
-        public UsuarioRepository(ApplicationDbContext context, ISeguridad seguridad) //estamos inyectando la dependencia de la interfaz ISeguridad junto con el dbcontext
+        public UsuarioRepository(ApplicationDbContext context, ISeguridad seguridad, IRolRepository rolRepository) //estamos inyectando la dependencia de la interfaz ISeguridad junto con el dbcontext
         {
             _context = context;
             _seguridad = seguridad;
+            _rolRepository = rolRepository;
         }
         public async Task InsertarUsuario(UsuarioCreacionModel model)
         {
@@ -95,6 +98,16 @@ namespace SistemaBuscador.Repositories
             var usuario = await _context.Usuarios.FirstOrDefaultAsync(x => x.Id == id); //buscamos el usuario que tenga el mmismo id en la bd
             _context.Usuarios.Remove(usuario); //eliminamos el usuario
             await _context.SaveChangesAsync(); // guardamos los cambios
+        }
+
+        public async Task<UsuarioCreacionModel> NuevoUsuarioCreacion()
+        {
+            var roles = await _rolRepository.ObtenerListaRoles();
+            var respuesta = new UsuarioCreacionModel(); //devuelve un objeto nuevo de tipo usuario creacion model
+
+            respuesta.Roles = new SelectList(roles,"Id","Nombre"); // valor de la lista y nombre del campo
+
+            return respuesta;
         }
     }
     

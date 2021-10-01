@@ -22,10 +22,13 @@ namespace SistemaBuscador.Controllers
             return View(listaUaurio);
         }
 
-        public IActionResult NuevoUsuario()
+        public async Task<IActionResult> NuevoUsuario()
         {
-            return View();
+            var model = await _repository.NuevoUsuarioCreacion();
+            return View(model); // devuelve el objeto vacio pero con la propiedad de la lista y los valores precargados de la BD de los roles
         }
+
+
         [HttpPost]
         public async Task<IActionResult> NuevoUsuario(UsuarioCreacionModel model) //metodo para recibir la informcion de los usuarios y recibe como parametro el modelo
         {
@@ -33,11 +36,11 @@ namespace SistemaBuscador.Controllers
             {
                 //guardar el usuario en la bd
                 await _repository.InsertarUsuario(model);
-                return RedirectToAction("Index"); //como la vista del index esta usando el modelo, tenemos que pasarle un modelo con los usuarios de la bd
+                return RedirectToAction("Index","Usuarios"); //como la vista del index esta usando el modelo, tenemos que pasarle un modelo con los usuarios de la bd
             }
 
 
-            return View(model);
+            return View("NuevoUsuario", model);
         }
         public async Task<IActionResult> ActualizarUsuario([FromRoute] int id) //metodo para editar usuarios, capturamos de la url el id del usuario
         {
@@ -48,20 +51,35 @@ namespace SistemaBuscador.Controllers
         [HttpPost]
         public async Task<IActionResult> ActualizarUsuario(UsuarioEdicionModel model)
         {
-            await _repository.ActualizarUsuario(model);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                await _repository.ActualizarUsuario(model);
+                return RedirectToAction("Index");
+            }
+
+            return View(model);
+
         }
-        public IActionResult CambiarPassword(int id)
+        public IActionResult CambiarPassword(int? id)
         {
-            ViewBag.idUsuario = id;
+            if (id != null)
+            {
+                ViewBag.idUsuario = id;
+                return View();
+            }
             return View();
+            
         }
 
         [HttpPost]
         public async Task<IActionResult> CambiarPassword(UsuarioCambioPasswordModel model)
         {
-            await _repository.ActualizarPassword(model);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                await _repository.ActualizarPassword(model);
+                return RedirectToAction("Index");
+            }
+            return View(model);
         }
         public async Task<IActionResult> EliminarUsuario(int id)
         {

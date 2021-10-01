@@ -34,9 +34,9 @@ namespace SistemaBuscador.Controllers
             {
                 await _repository.InsertarRol(model);
                 //guardar en la bd
-                return RedirectToAction("Index");
+                return RedirectToAction("Index","Roles");
             }
-            return View(model);
+            return View("NuevoRol", model);
         }
 
         public async Task<IActionResult> ActualizarRol(int id)
